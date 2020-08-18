@@ -1,0 +1,24 @@
+version: '3'
+services:
+  phalcon:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: phalcon-demo
+    hostname: phalcon
+    environment:
+      DB_HOST: 192.168.99.1
+      DB_PORT: 3306
+      DB_USERNAME: phalconUser
+      DB_PASSWORD: FSjKCz5Yk10gC5cvg0fiYWBmK7JJki
+      DB_NAME: phalcon-demo
+    volumes:
+      - ./www:/var/www/phalcon-demo.com/www
+      - ./vendor:/var/www/phalcon-demo.com/vendor
+      - ./composer.lock:/var/www/phalcon-demo.com/composer.lock
+      - ./composer.json:/var/www/phalcon-demo.com/composer.json
+    ports:
+      - "80:80"
+      - "443:443"
+    network_mode: bridge
+    restart: always

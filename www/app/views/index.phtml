@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Phalcon Demo</title>
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('/img/favicon.ico')?>"/>
+    </head>
+    <body>
+    	<div class="container pt-3 pb-3 mb-4 header">
+			<div class="row">
+      			<div class="col-3 text-left logo_wrapper">
+      				<a href="/">
+      					<img alt="" src="https://assets.phalconphp.com/phalcon/images/svg/phalcon-logo-white-105x40.svg">
+              			<span>Demo</span>
+              		</a>
+      			</div>
+              	<div class="col d-flex align-items-center">
+              		<ul class="nav">
+                      <li class="nav-item">
+                        <?php
+                        echo $this->tag->linkTo(["users", "Users", "class" => "nav-link py-0"]);
+                        ?>
+                      </li>
+                    </ul>
+              	</div>
+             	<div class="col-5 col-sm-4 col-md-3 col-lg-2 d-flex align-items-center">
+             		<div class="text-right">
+        		        <?php
+        		        if($this->user !== null){
+        		            echo "<span class='mr-3'>Hi " . $this->user->name . "</span>";
+        		            echo $this->tag->linkTo(["signin/logout", "Logout"]);
+        		        }else{
+        		            echo $this->tag->linkTo(["signin", "Login", "class" => "mr-3"]);
+        		            echo $this->tag->linkTo(["signup", "Sign Up"]);
+        		        }
+        		        ?>
+                	</div>
+
+             	</div>
+    		</div>
+    	</div>
+        <div class="container">
+        	<div class="row">
+        		<div class="col">
+        			<?php
+                    echo $this->getContent();
+                    ?>
+        		</div>
+        	</div>
+
+        </div>
+        <script src="/js/app.js"></script>
+    </body>
+</html>
