@@ -1,0 +1,17 @@
+<div class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
+
+    <?php
+
+    if($success === true && $this->user !== null){
+        echo "You are logged in as ".$this->user->name;
+    }else{
+        echo "Sorry, the following problems were generated:<br>";
+        var_dump($registerErrors);
+        foreach ($registerErrors as $message){
+            echo $message."</br>";
+        }
+    }
+    ?>
+</div>
+
+<?php echo $this->tag->linkTo(['/', 'Go back', 'class' => 'btn btn-primary']); ?>
